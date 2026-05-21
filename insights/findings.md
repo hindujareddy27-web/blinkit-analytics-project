@@ -62,30 +62,65 @@ Three tables were analyzed:
 - blinkit_products: 268 products with pricing, margin, and shelf life data
 - Tables joined on product_id
 
-Products classified by perishability:
-- Perishable: shelf_life_days ≤ 30
-- Semi-Perishable: shelf_life_days ≤ 90
-- Non-Perishable: shelf_life_days > 90
+### This page used:
+- SQL aggregations
+-Common Table Expressions (CTEs)
+-Window functions
+-DAX calculations
+-Interactive filter-aware measures
+  
+
+Custom metrics created:
+
+**Revenue Leakage Calculation (DAX):**
+```
+Revenue Leakage = SUM(table[potential_revenue]) - SUM(table[total_revenue])
+```
+
+**Revenue Realization %(DAX):**
+```
+Revenue Realization % = DIVIDE( SUM(table[total_revenue]), SUM(table[potential_revenue]), 0 ) * 100
+```
+
+**Product Damage Ranking (SQL Window Function):**
+```sql
+RANK() OVER ( PARTITION BY p.category ORDER BY d.damage_cost_inr DESC ) AS damage_rank_in_category
+```
+
+**Damage Rate Calculation (SQL):**
+```sql
+ROUND( SUM(i.damaged_stock) * 100.0 / NULLIF(SUM(i.stock_received), 0), 2 ) AS damage_rate_pct
+```
 
 ### Key Findings
 
 **Revenue Leakage:**
-Revenue realization across all categories is only 33.67% — meaning damage losses consume approximately 66% of potential revenue. Out of ₹17.71M in potential revenue, only ₹5.96M is actually realized. ₹11.75M is lost to inventory damage.
+₹11.75M in potential revenue was lost due to damaged inventory, leaving overall revenue realization at only 33.7% of total potential revenue.
+
+This indicates that inventory inefficiencies are significantly impacting operational profitability.
 
 **Highest Risk Category:**
-Pet Care emerged as the highest operational risk category — combining high margins with disproportionately high inventory damage losses. High margin potential is being significantly offset by poor inventory management.
+Pet Care emerged as the highest-risk category due to disproportionately large inventory damage losses.
 
-**Category-Level Damage:**
-Across most categories, inventory damage losses exceed realized revenue — indicating a systemic operational inefficiency throughout the supply chain rather than an isolated product problem.
+Despite maintaining relatively strong margins, inventory inefficiencies within this category substantially reduced realized revenue.
+
+**Product-Level Damage:**
+Baby Wipes, Pet Treats, and Toilet Cleaner ranked among the highest contributors to inventory damage costs and revenue leakage.
+
+The ranking analysis revealed that a relatively small subset of products contributes disproportionately to overall operational losses.
 
 **Top Damage Driver:**
 Baby Wipes is the single highest revenue leakage product contributing ₹1.02M in damage costs within the Baby Care category. Baby Care overall shows damage rates above 70% for its top products.
 
-**Total Damage Loss:**
-₹34.81M in total damage losses identified across all categories — a figure that dwarfs the ₹5.96M in actual realized revenue, highlighting the scale of the operational problem.
+**Revenue Realization Patterns:**
+Categories such as Instant & Frozen Food and Personal Care lose a substantial portion of potential revenue through damaged inventory despite maintaining strong sales activity.
 
-**Margin vs Risk:**
-Several categories maintain strong margins (25-40%) but still show severe revenue leakage — meaning the pricing strategy is sound but operational execution is not. Pet Care and Personal Care are the clearest examples of this pattern.
+This indicates that improving operational handling could significantly increase realized profitability.
+
+**Margin vs Operational Efficiency:**
+Several categories operate at healthy average margins (~28%) while simultaneously experiencing severe inventory losses.
+
+This suggests that profitability potential exists, but operational inefficiencies are preventing revenue realization.
 
 ---
 
@@ -97,6 +132,7 @@ Several categories maintain strong margins (25-40%) but still show severe revenu
 - Referral Program and New User Discount are the two campaigns worth scaling
 
 **Inventory & Products:**
-- Pet Care and Baby Care require immediate inventory management intervention given damage rates above 70%
-- Revenue realization of 33.67% is unsustainably low — a 10% improvement in damage reduction would add approximately ₹1.77M to actual revenue
-- High-margin categories with high damage (Pet Care, Personal Care) should be prioritized for cold chain or storage improvements
+-Prioritize operational improvements within Pet Care and Personal Care categories where inventory losses are disproportionately high.
+-Implement stricter monitoring for high-risk SKUs such as Baby Wipes, Pet Treats, and Toilet Cleaner.
+-Improve storage, replenishment, and handling strategies for categories with high damage rates but healthy profit margins.
+-Use product-level damage rankings to prioritize inventory control and markdown optimization efforts.
