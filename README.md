@@ -72,10 +72,9 @@ Raw Kaggle Data → Excel Cleaning → MySQL Analysis → Power BI Dashboard
 
 ## 📐 Custom SQL & DAX
 
-**Growth Rate (Marketing):**
+**ROAS(Return on Ad Spend)(SQL):**
 ```sql
-0.7 * ((likes_added + comments_added) * 100.0 / views) +
-0.3 * ((subscriptions_added * 100.0) / views)
+ROUND(SUM(revenue_generated) / SUM(spend), 2) as ROAS
 ```
 
 **Wasted Spend (DAX):**
@@ -87,14 +86,30 @@ Wasted Spend = SUMX(table, IF([conversion_rate] < 0.1, [spend], 0))
 ```
 Revenue Leakage = [Potential Revenue] - [Actual Revenue]
 ```
+**Funnel Value (DAX):**
+```
+Funnel Value = 
+SWITCH(
+    SELECTEDVALUE('Revenue Funnel'[Stage]),
 
-**Perishability Classification (SQL):**
+    "Potential Revenue",
+        SUM(product_economics[potential_revenue]),
+
+    "Revenue Leakage",
+        [Revenue Leakage],
+
+    "Actual Revenue",
+        SUM(product_economics[total_revenue])
+)
+```
+
+**Conversion Rate (SQL):**
 ```sql
-CASE 
-    WHEN shelf_life_days <= 30 THEN 'Perishable'
-    WHEN shelf_life_days <= 90 THEN 'Semi-Perishable'
-    ELSE 'Non-Perishable'
-END as product_type
+ROUND(SUM(conversions) * 100.0 / SUM(clicks), 2) as conversion_rate
+```
+**Joining blinkit_products & blinkit_inventory by Inner Join(SQL):**
+```sql
+INNER JOIN blinkit_products p ON i.product_id = p.product_id
 ```
 
 ---
@@ -128,7 +143,6 @@ blinkit-analytics-project/
 │   └── raw kaggle datasets
 │
 ├── excel-cleaning/                
-│   ├── before_after_screenshots/
 │   └── cleaning_steps/
 │
 ├── sql/                           
