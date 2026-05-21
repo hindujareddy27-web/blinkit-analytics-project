@@ -132,7 +132,8 @@ This suggests that profitability potential exists, but operational inefficiencie
 - Referral Program and New User Discount are the two campaigns worth scaling
 
 **Inventory & Products:**
--Prioritize operational improvements within Pet Care and Personal Care categories where inventory losses are disproportionately high.
--Implement stricter monitoring for high-risk SKUs such as Baby Wipes, Pet Treats, and Toilet Cleaner.
--Improve storage, replenishment, and handling strategies for categories with high damage rates but healthy profit margins.
--Use product-level damage rankings to prioritize inventory control and markdown optimization efforts.
+- Prioritize operational improvements within Pet Care and Personal Care categories where inventory losses are disproportionately high
+- Implement stricter monitoring for high-risk SKUs such as Baby Wipes, Pet Treats, and Toilet Cleaner
+- Improve storage, replenishment, and handling strategies for categories with high damage rates but healthy profit margins
+- Use product-level damage rankings to prioritize inventory control and markdown optimization efforts
+
