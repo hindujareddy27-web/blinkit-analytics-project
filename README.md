@@ -139,9 +139,8 @@ blinkit-analytics-project/
 │
 ├── README.md
 │
-├── data/                          
-│   └── raw kaggle datasets
-│
+├── data/        # Raw and cleaned datasets                  
+│   
 ├── excel-cleaning/                
 │   └── cleaning_steps/
 │
