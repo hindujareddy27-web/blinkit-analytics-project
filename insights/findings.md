@@ -5,7 +5,7 @@ Analyzed Blinkit's retail operations across two domains — marketing campaign p
 
 ---
 
-## Page 1 — Marketing Performance Analysis
+## Page 1 & 2 — Marketing Performance Analysis
 
 ### Data Preparation
 The marketing dataset contained 5,400 campaign records across 9 campaign types, 4 channels (App, Email, SMS, Social Media) and 4 audience segments (All, Inactive, New Users, Premium).
@@ -54,7 +54,7 @@ Revenue consistently ran at 2x spend across all months in both 2023 and 2024 —
 
 ---
 
-## Page 2 — Product Profitability & Inventory Risk
+## Page 3 & 4 — Product Profitability & Inventory Risk
 
 ### Data Preparation
 Three tables were analyzed:
