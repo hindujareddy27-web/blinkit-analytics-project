@@ -35,10 +35,9 @@ Built as a 4-page interactive Power BI dashboard with dynamic subtitles, window 
 
 **Inventory & Products:**
 - Which product categories have the highest damage-related revenue leakage?
-- Are perishables causing disproportionately more damage than non-perishables?
 - Which specific products are the biggest loss drivers?
 - How does margin efficiency compare against inventory risk across categories?
-
+- How does the Revenue Realization compare to Inventory Damage by category 
 ---
 
 ## 🛠️ Project Workflow
@@ -58,11 +57,10 @@ Raw Kaggle Data → Excel Cleaning → MySQL Analysis → Power BI Dashboard
 - CTEs for bleeding money product identification
 - Window functions: RANK() OVER PARTITION BY for campaign and product rankings
 - Rolling 3-month ROAS trend using ROWS BETWEEN window function
-- Revenue leakage and damage cost calculations
-- Perishability classification using CASE WHEN on shelf_life_days
+- Potential Revenue, Revenue lost and damage cost calculations
 
 ### 3. Power BI Dashboard
--  analytical pages + cover page with navigation buttons
+- analytical pages + cover page with navigation buttons
 - Dynamic DAX subtitles that update based on slicer selections
 - Decomposition tree for drill-down damage analysis
 - Conditional formatting on risk monitoring matrix
@@ -170,7 +168,7 @@ blinkit-analytics-project/
 ### Page 1 & 2 — Marketing Performance Analysis
 Campaign conversion analysis, ROAS efficiency, wasted spend identification, channel performance heatmap, rolling ROAS trend, and campaign rankings — all filterable by audience segment and channel with dynamic subtitles.
 
-### Page 3 & 4 — Product Profitability & Inventory Risk
+### Page 3 & 4 —  Inventory Risk & Damage Analysis
 Margin efficiency vs inventory risk scatter, revenue realization vs damage by category, decomposition tree for damage drill-down, revenue leakage funnel, and high-risk product monitoring matrix with conditional formatting.
 
 ---
