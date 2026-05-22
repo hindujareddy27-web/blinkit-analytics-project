@@ -152,9 +152,9 @@ blinkit-analytics-project/
 │   ├── blinkit_analysis.pbix
 │   └── dashboard_screenshots/
 │       ├── Marketing_Performance/
-│       ├── Marketing(Budget &ROAS)
-│       ├── Inventory
-|       └── Damage_Analysis
+│       ├── Marketing(Budget &ROAS)/
+│       ├── Inventory/
+|       └── Damage_Analysis/
 │
 ├── insights/
 │   └── findings.md                
