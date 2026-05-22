@@ -21,7 +21,7 @@ This project digs into those questions across two analytical lenses:
 - **Marketing:** Where is campaign spend actually converting, and where is it being wasted?
 - **Inventory & Products:** Which categories and products are causing the most revenue leakage through damage?
 
-Built as a 2-page interactive Power BI dashboard with dynamic subtitles, window function SQL queries, and DAX measures that respond to user filters in real time.
+Built as a 4-page interactive Power BI dashboard with dynamic subtitles, window function SQL queries, and DAX measures that respond to user filters in real time.
 
 ---
 
@@ -62,7 +62,7 @@ Raw Kaggle Data → Excel Cleaning → MySQL Analysis → Power BI Dashboard
 - Perishability classification using CASE WHEN on shelf_life_days
 
 ### 3. Power BI Dashboard
-- 2 analytical pages + cover page with navigation buttons
+-  analytical pages + cover page with navigation buttons
 - Dynamic DAX subtitles that update based on slicer selections
 - Decomposition tree for drill-down damage analysis
 - Conditional formatting on risk monitoring matrix
@@ -151,9 +151,10 @@ blinkit-analytics-project/
 ├── powerbi/                       
 │   ├── blinkit_analysis.pbix
 │   └── dashboard_screenshots/
-│       ├── cover_page.png
-│       ├── page1_marketing.png
-│       └── page2_inventory_product.png
+│       ├── Marketing_Performance/
+│       ├── Marketing(Budget &ROAS)
+│       ├── Inventory
+|       └── Damage_Analysis
 │
 ├── insights/
 │   └── findings.md                
@@ -166,13 +167,10 @@ blinkit-analytics-project/
 
 ## 📸 Dashboard Pages
 
-### Cover Page
-Navigation hub with project overview and direct links to each analytical page.
-
-### Page 1 — Marketing Performance Analysis
+### Page 1 & 2 — Marketing Performance Analysis
 Campaign conversion analysis, ROAS efficiency, wasted spend identification, channel performance heatmap, rolling ROAS trend, and campaign rankings — all filterable by audience segment and channel with dynamic subtitles.
 
-### Page 2 — Product Profitability & Inventory Risk
+### Page 3 & 4 — Product Profitability & Inventory Risk
 Margin efficiency vs inventory risk scatter, revenue realization vs damage by category, decomposition tree for damage drill-down, revenue leakage funnel, and high-risk product monitoring matrix with conditional formatting.
 
 ---
