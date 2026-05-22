@@ -8,7 +8,7 @@
 
 ---
 
-![Dashboard Preview](assets/dashboard_preview.png)
+![Dashboard Preview](assets/Damage_Analysis.png)
 
 ---
 
